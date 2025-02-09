@@ -1,12 +1,12 @@
 <h1 align="center">InfoBot Telegram Bot 🌌</h1>
 
 <p align="center">
-  <em>InfoBot: A powerful Telegram bot script for getting info about users, channels, groups, and supergroups</em>
+  <em>InfoBot: A powerful Telegram bot script for getting info about users, bots, channels, groups, and supergroups</em>
 </p>
 
 <p align="center">
-  <a href="https://github.com/abirxdhack/InfoBot/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/abirxdhack/InfoBot?style=social"></a>
-  <a href="https://github.com/abirxdhack/InfoBot/network/members"><img alt="GitHub forks" src="https://img.shields.io/github/forks/abirxdhack/InfoBot?style=social"></a>
+  <a href="https://github.com/abirxdhack/InfoBot/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/abirxdhack/InfoBot"></a>
+  <a href="https://github.com/abirxdhack/InfoBot/network/members"><img alt="GitHub forks" src="https://img.shields.io/github/forks/abirxdhack/InfoBot"></a>
   <a href="https://github.com/abirxdhack/InfoBot/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/abirxdhack/InfoBot"></a>
   <a href="https://github.com/abirxdhack/InfoBot/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/abirxdhack/InfoBot"></a>
   <a href="https://github.com/abirxdhack/InfoBot/pulls"><img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/abirxdhack/InfoBot"></a>
