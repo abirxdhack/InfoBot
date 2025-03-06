@@ -89,3 +89,8 @@ The bot supports the following commands:
 - Name: Abir Arafat Chawdhury
 - Telegram: [@abirxdhackz](https://t.me/abirxdhackz)
 
+## Author 📝
+
+- Name: 404 Coder 
+- Telegram: [@nkka404](https://t.me/nkka404)
+
