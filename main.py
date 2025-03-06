@@ -90,8 +90,8 @@ def setup_info_handler(app):
                     [InlineKeyboardButton("📱 Android Link", url=f"tg://openmessage?user_id={user.id}"), InlineKeyboardButton("📱 iOS Link", url=f"tg://user?id={user.id}")],
                     [InlineKeyboardButton("🔗 Permanent Link", user_id=user.id)],
                 ]
-                photo = await client.download_media(user.photo.big_file_id) if user.photo else None
-                await message.reply_photo(photo=photo, caption=response, parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup(buttons))
+                photo = await client.download_media(user.photo.big_file_id) if user.photo else "https://t.me/abir_x_official_developer/194"
+                await client.send_photo(chat_id=message.chat.id, photo=photo, caption=response, parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup(buttons))
                 logger.info("User info fetched successfully with buttons")
             elif message.reply_to_message:
                 # Show info of the replied user or bot
@@ -126,8 +126,8 @@ def setup_info_handler(app):
                     [InlineKeyboardButton("📱 Android Link", url=f"tg://openmessage?user_id={user.id}"), InlineKeyboardButton("📱 iOS Link", url=f"tg://user?id={user.id}")],
                     [InlineKeyboardButton("🔗 Permanent Link", user_id=user.id)],
                 ]
-                photo = await client.download_media(user.photo.big_file_id) if user.photo else None
-                await message.reply_photo(photo=photo, caption=response, parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup(buttons))
+                photo = await client.download_media(user.photo.big_file_id) if user.photo else "https://t.me/abir_x_official_developer/194"
+                await client.send_photo(chat_id=message.chat.id, photo=photo, caption=response, parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup(buttons))
                 logger.info("Replied user info fetched successfully with buttons")
             elif len(message.command) > 1:
                 # Extract username from the command
@@ -167,8 +167,8 @@ def setup_info_handler(app):
                         [InlineKeyboardButton("📱 Android Link", url=f"tg://openmessage?user_id={user.id}"), InlineKeyboardButton("📱 iOS Link", url=f"tg://user?id={user.id}")],
                         [InlineKeyboardButton("🔗 Permanent Link", user_id=user.id)],
                     ]
-                    photo = await client.download_media(user.photo.big_file_id) if user.photo else None
-                    await message.reply_photo(photo=photo, caption=response, parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup(buttons))
+                    photo = await client.download_media(user.photo.big_file_id) if user.photo else "https://t.me/abir_x_official_developer/194"
+                    await client.send_photo(chat_id=message.chat.id, photo=photo, caption=response, parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup(buttons))
                     logger.info("User/bot info fetched successfully with buttons")
                 except (PeerIdInvalid, UsernameNotOccupied, IndexError):
                     logger.info(f"Username '{username}' not found as a user/bot. Checking for chat...")
@@ -182,22 +182,22 @@ def setup_info_handler(app):
                             f"👥 **Member count:** {chat.members_count}"
                         )
                         buttons = [
-                            [InlineKeyboardButton("⚡️Joining Link", url=f"t.me/c/{str(chat.id).replace('-100', '')}"), InlineKeyboardButton("🔗 Permanent Link", url=f"t.me/c/{str(chat.id).replace('-100', '')}")],
+                            [InlineKeyboardButton("⚡️Joining Link", url=f"t.me/c/{str(chat.id).replace('-100', '')}/100"), InlineKeyboardButton("🔗 Permanent Link", url=f"t.me/c/{str(chat.id).replace('-100', '')}/100")],
                         ]
-                        photo = await client.download_media(chat.photo.big_file_id) if chat.photo else None
-                        await message.reply_photo(photo=photo, caption=response, parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup(buttons))
+                        photo = await client.download_media(chat.photo.big_file_id) if chat.photo else "https://t.me/abir_x_official_developer/194"
+                        await client.send_photo(chat_id=message.chat.id, photo=photo, caption=response, parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup(buttons))
                         logger.info("Chat info fetched successfully with buttons")
                     except (ChannelInvalid, PeerIdInvalid):
-                        await message.reply_text("**Invalid username or chat ❌**", parse_mode=ParseMode.MARKDOWN)
+                        await client.send_message(chat_id=message.chat.id, text="**Invalid username or chat ❌**", parse_mode=ParseMode.MARKDOWN)
                     except Exception as e:
                         logger.error(f"Error fetching chat info: {str(e)}")
-                        await message.reply_text(f"**Error:** `{str(e)}`", parse_mode=ParseMode.MARKDOWN)
+                        await client.send_message(chat_id=message.chat.id, text=f"**Error:** `{str(e)}`", parse_mode=ParseMode.MARKDOWN)
                 except Exception as e:
                     logger.error(f"Error fetching user or bot info: {str(e)}")
-                    await message.reply_text(f"**Error:** `{str(e)}`", parse_mode=ParseMode.MARKDOWN)
+                    await client.send_message(chat_id=message.chat.id, text=f"**Error:** `{str(e)}`", parse_mode=ParseMode.MARKDOWN)
         except Exception as e:
             logger.error(f"Unhandled exception: {str(e)}")
-            await message.reply_text(f"**Error:** `{str(e)}`", parse_mode=ParseMode.MARKDOWN)
+            await client.send_message(chat_id=message.chat.id, text=f"**Error:** `{str(e)}`", parse_mode=ParseMode.MARKDOWN)
 
 app = Client("info_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 setup_info_handler(app)
