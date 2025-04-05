@@ -11,6 +11,27 @@ from config import COMMAND_PREFIX, PROFILE_ERROR_URL
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+START_MESSAGE = """
+<b>Welcome to the Telegram Info Bot 🌟</b>
+
+Get quick and detailed insights about any Telegram user or group.
+
+<b>Features:</b>
+👤 Full Name  
+🆔 User ID  
+🔖 Username  
+💬 Chat ID  
+🌐 Data Center Location  
+💎 Premium Status  
+🛡 Verified Badge  
+🚩 Account Flags  
+🕒 Online Status  
+📅 Account Creation Date  
+⏳ Account Age
+
+Use /info or /id to get started! 🚀
+"""
+
 # Mapping of Data Center IDs to their locations
 DC_LOCATIONS = {
     1: "MIA, Miami, USA, US",
@@ -276,6 +297,13 @@ def setup_info_handler(app):
                 await progress_message.delete()
         except Exception as e:
             logger.error(f"Unhandled exception: {str(e)}")
+
+@app.on_message(filters.command("start", prefixes=["/", ".", ",", "!"]) & (filters.group | filters.private))
+async def start(client, message):
+    buttons = [
+        [InlineKeyboardButton("Update Channel", url="https://t.me/Modvip_rm"), InlineKeyboardButton("My Dev👨‍💻", user_id=7303810912)]
+    ]
+    await client.send_message(message.chat.id, START_MESSAGE, parse_mode=ParseMode.HTML, disable_web_page_preview=True, reply_markup=InlineKeyboardMarkup(buttons))
 
 app = Client("info_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 setup_info_handler(app)
