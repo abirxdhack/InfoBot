@@ -5,7 +5,7 @@ from pyrogram import filters, Client
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram.enums import ParseMode, ChatType, UserStatus
 from pyrogram.errors import PeerIdInvalid, UsernameNotOccupied, ChannelInvalid
-from config import COMMAND_PREFIX, PROFILE_ERROR_URL
+from config import COMMAND_PREFIX, PROFILE_ERROR_URL, API_ID, API_HASH, BOT_TOKEN
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -298,12 +298,12 @@ def setup_info_handler(app):
         except Exception as e:
             logger.error(f"Unhandled exception: {str(e)}")
 
-@app.on_message(filters.command("start", prefixes=["/", ".", ",", "!"]) & (filters.group | filters.private))
-async def start(client, message):
-    buttons = [
-        [InlineKeyboardButton("Update Channel", url="https://t.me/Modvip_rm"), InlineKeyboardButton("My Dev👨‍💻", user_id=7303810912)]
-    ]
-    await client.send_message(message.chat.id, START_MESSAGE, parse_mode=ParseMode.HTML, disable_web_page_preview=True, reply_markup=InlineKeyboardMarkup(buttons))
+    @app.on_message(filters.command("start", prefixes=["/", ".", ",", "!"]) & (filters.group | filters.private))
+    async def start(client, message):
+        buttons = [
+            [InlineKeyboardButton("Update Channel", url="https://t.me/Modvip_rm"), InlineKeyboardButton("My Dev👨‍💻", user_id=7303810912)]
+        ]
+        await client.send_message(message.chat.id, START_MESSAGE, parse_mode=ParseMode.HTML, disable_web_page_preview=True, reply_markup=InlineKeyboardMarkup(buttons))
 
 app = Client("info_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 setup_info_handler(app)
